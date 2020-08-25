@@ -35,9 +35,12 @@ public class ChatUser extends UserItem
 		}
 	}
 	
-	public void setRoleplayName(String arg0)
+	public void ignore(Channel...args)
 	{
-		this.nameRoleplay = arg0;
+		for (Channel channel : args)
+		{
+			this.idsChannelsListening.remove(channel.getID());
+		}
 	}
 	
 	public boolean block(ChatUser arg0)
