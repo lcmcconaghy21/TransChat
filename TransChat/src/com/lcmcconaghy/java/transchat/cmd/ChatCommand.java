@@ -11,6 +11,7 @@ public abstract class ChatCommand extends TransCommand
 	public ChatCommand(String... aliases) throws TransCommandException
 	{
 		super(aliases);
+		this.setHidden(true);
 	}
 	
 	
