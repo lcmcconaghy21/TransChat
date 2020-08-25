@@ -5,7 +5,9 @@ import com.lcmcconaghy.java.transcore.util.UtilPerms;
 
 public enum Perm implements PermissionBase
 {
-	
+	LISTEN,
+	IGNORE,
+	FOCUS,
 	LIST,
 	
 	NICK,
@@ -26,7 +28,4 @@ public enum Perm implements PermissionBase
 	{
 		return UtilPerms.toNode(this, TransChat.get());
 	}
-	
-	
-	
 }
