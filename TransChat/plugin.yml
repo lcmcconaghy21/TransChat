@@ -1,0 +1,7 @@
+name: TransChat
+version: 1.0.0_BETA
+main: com.lcmcconaghy.java.transchat.TransChat
+description: <d>TransChat <e>is a plugin developed by the <b>Inkwell Realms Development Team <e>to manage chat channels.
+authors: [Ironhippy]
+softdepend: [TransCore]
+api-version: 1.13
