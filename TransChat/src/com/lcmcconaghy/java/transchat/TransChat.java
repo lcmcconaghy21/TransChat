@@ -12,6 +12,7 @@ import com.lcmcconaghy.java.transcore.TransPlugin;
 import com.lcmcconaghy.java.transcore.command.TransCommand;
 import com.lcmcconaghy.java.transcore.engine.Engine;
 import com.lcmcconaghy.java.transcore.exception.TransCommandException;
+import com.lcmcconaghy.java.transcore.store.Config;
 import com.lcmcconaghy.java.transcore.store.StoreCollection;
 import com.lcmcconaghy.java.transcore.store.serializable.Serializable;
 import com.lcmcconaghy.java.transcore.util.UtilGeneral;
@@ -117,6 +118,12 @@ public class TransChat extends TransPlugin
 	public boolean containsAdapter(ChatAdapter arg0)
 	{
 		return this.registeredAdapters.contains(arg0);
+	}
+
+	@Override
+	public Config getTransConfig()
+	{
+		return ChatConfig.get();
 	}
 	
 }
