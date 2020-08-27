@@ -17,6 +17,8 @@ public class CmdChat extends ChatCommand
 		this.addSubCommand(new CmdRemove());
 		this.addSubCommand(new CmdList());
 		
+		this.addSubCommand(new CmdChatFocus());
+		
 		this.addSubCommand(new CmdListen());
 		this.addSubCommand(new CmdIgnore());
 		
