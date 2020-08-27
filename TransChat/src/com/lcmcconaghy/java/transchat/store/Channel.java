@@ -72,6 +72,12 @@ public class Channel extends StoreItem<Channel>
 		this.aliases.add(arg0.toLowerCase());
 	}
 	
+	public void updatePerm(String arg0)
+	{
+		this.focusNode = "transchat.chat."+arg0;
+		this.listenNode = "transchat.listen."+arg0;
+	}
+	
 	public void addQuickSwitch(String arg0)
 	{
 		arg0 = arg0.toLowerCase();
