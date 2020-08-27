@@ -18,6 +18,8 @@ public class ChatUser extends UserItem
 	private List<String> idsChannelsListening = new ArrayList<String>();
 	private String nameRoleplay;
 	
+	private boolean muted = false;
+	
 	private List<String> idsBlockedPlayers = new ArrayList<String>();
 	
 	// { SETTERS } //
@@ -61,6 +63,11 @@ public class ChatUser extends UserItem
 		return true;
 	}
 	
+	public void setMuted(boolean arg0)
+	{
+		this.muted = arg0;
+	}
+	
 	// { GETTERS } //
 	
 	public Channel getFocused()
@@ -86,6 +93,11 @@ public class ChatUser extends UserItem
 		}
 		
 		return this.nameRoleplay;
+	}
+	
+	public boolean isMuted()
+	{
+		return this.muted;
 	}
 	
 }
