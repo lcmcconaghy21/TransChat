@@ -5,12 +5,12 @@ import com.lcmcconaghy.java.transchat.pager.PagerChannels;
 import com.lcmcconaghy.java.transcore.command.argument.primitive.ArgumentInteger;
 import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
-public class CmdList extends ChatCommand
+public class CmdChatList extends ChatCommand
 {
 	
 	// { CONSTRUCTOR } //
 	
-	public CmdList() throws TransCommandException
+	public CmdChatList() throws TransCommandException
 	{
 		super("list");
 		

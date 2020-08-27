@@ -13,14 +13,14 @@ public class CmdChat extends ChatCommand
 	{
 		super("chat", "ch");
 		
-		this.addSubCommand(new CmdCreate());
-		this.addSubCommand(new CmdRemove());
-		this.addSubCommand(new CmdList());
+		this.addSubCommand(new CmdChatCreate());
+		this.addSubCommand(new CmdChatRemove());
+		this.addSubCommand(new CmdChatList());
 		
 		this.addSubCommand(new CmdChatFocus());
 		
-		this.addSubCommand(new CmdListen());
-		this.addSubCommand(new CmdIgnore());
+		this.addSubCommand(new CmdChatListen());
+		this.addSubCommand(new CmdChatIgnore());
 		
 		this.addSubCommand(new TransCommandVersion(TransChat.get()));
 	}

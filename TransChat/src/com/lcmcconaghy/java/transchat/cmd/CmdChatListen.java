@@ -6,12 +6,12 @@ import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transchat.store.ChatUser;
 import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
-public class CmdListen extends ChatCommand
+public class CmdChatListen extends ChatCommand
 {
 	
 	// { CONSTRUCTOR } //
 	
-	public CmdListen() throws TransCommandException
+	public CmdChatListen() throws TransCommandException
 	{
 		super("listen");
 		

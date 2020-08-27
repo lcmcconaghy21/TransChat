@@ -6,12 +6,12 @@ import com.lcmcconaghy.java.transchat.store.ChannelCollection;
 import com.lcmcconaghy.java.transcore.command.argument.primitive.ArgumentString;
 import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
-public class CmdCreate extends ChatCommand
+public class CmdChatCreate extends ChatCommand
 {
 	
 	// { CONSTRUCTOR } //
 	
-	public CmdCreate() throws TransCommandException
+	public CmdChatCreate() throws TransCommandException
 	{
 		super("create");
 		

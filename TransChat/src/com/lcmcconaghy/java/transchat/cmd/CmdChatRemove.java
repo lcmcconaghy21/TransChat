@@ -5,12 +5,12 @@ import com.lcmcconaghy.java.transchat.cmd.argument.ArgumentChannel;
 import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
-public class CmdRemove extends ChatCommand
+public class CmdChatRemove extends ChatCommand
 {
 	
 	// { CONSTRUCTOR } //
 	
-	public CmdRemove() throws TransCommandException
+	public CmdChatRemove() throws TransCommandException
 	{
 		super("remove");
 		

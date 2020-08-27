@@ -7,12 +7,12 @@ import com.lcmcconaghy.java.transchat.store.ChatUser;
 import com.lcmcconaghy.java.transcore.command.TransCommand;
 import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
-public class CmdIgnore extends TransCommand
+public class CmdChatIgnore extends TransCommand
 {
 	
 	// { CONSTRUCTOR } //
 	
-	public CmdIgnore() throws TransCommandException
+	public CmdChatIgnore() throws TransCommandException
 	{
 		super("ignore");
 		
