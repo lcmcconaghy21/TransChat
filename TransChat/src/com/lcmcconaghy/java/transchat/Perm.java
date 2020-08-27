@@ -10,8 +10,6 @@ public enum Perm implements PermissionBase
 	FOCUS,
 	LIST,
 	
-	NICK,
-	
 	CREATE,
 	REMOVE,
 	
