@@ -10,6 +10,10 @@ public class CmdChatEdit extends ChatCommand
 	public CmdChatEdit() throws TransCommandException
 	{
 		super("edit");
+		
+		this.setDesc("edit channel properties");
+		
+		this.addSubCommand(new CmdChatEditDistance());
 	}
 	
 }
