@@ -16,7 +16,7 @@ public enum Perm implements PermissionBase
 	EDIT_DISTANCE,
 	EDIT_PERMISSION,
 	EDIT_SWITCH,
-	EDIT_TAGGING,
+	// EDIT_TAGGING,
 	
 	MUTE;
 	
