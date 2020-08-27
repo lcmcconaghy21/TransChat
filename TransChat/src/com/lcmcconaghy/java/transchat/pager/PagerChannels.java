@@ -35,7 +35,7 @@ public class PagerChannels extends PagerAbstract<Channel>
 		boolean canFocus = true;
 		boolean canListen = true;
 		
-		if (!arg1.hasPermission(arg0.getPermissionNode()))
+		if ( !arg1.hasPermission( arg0.getFocusNode() ) )
 		{
 			preColor = "<c>";
 			canFocus = false;

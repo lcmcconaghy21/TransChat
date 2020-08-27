@@ -50,7 +50,8 @@ public class Channel extends StoreItem<Channel>
 	
 	private String displayId;
 	private List<String> aliases = new ArrayList<String>();
-	private String permissionNode;
+	private String focusNode;
+	private String listenNode;
 	
 	private String format = "<"+EngineChat.CHANNEL+" + "+EngineChat.PLAYER+"> "+EngineChat.MESSAGE;
 	
@@ -65,7 +66,8 @@ public class Channel extends StoreItem<Channel>
 	public void setDisplayName(String arg0)
 	{
 		this.displayId = arg0;
-		this.permissionNode = "transchat.chat."+arg0;
+		this.focusNode = "transchat.chat."+arg0;
+		this.listenNode = "transchat.listen."+arg0;
 		
 		this.aliases.add(arg0.toLowerCase());
 	}
@@ -128,9 +130,14 @@ public class Channel extends StoreItem<Channel>
 		return this.format;
 	}
 	
-	public String getPermissionNode()
+	public String getFocusNode()
 	{
-		return this.permissionNode;
+		return this.focusNode;
+	}
+	
+	public String getListenNode()
+	{
+		return this.listenNode;
 	}
 	
 	public double getRadiusOuter()
