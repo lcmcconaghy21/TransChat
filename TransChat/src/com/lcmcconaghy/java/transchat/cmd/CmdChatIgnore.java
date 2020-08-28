@@ -4,10 +4,9 @@ import com.lcmcconaghy.java.transchat.Perm;
 import com.lcmcconaghy.java.transchat.cmd.argument.ArgumentChannel;
 import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transchat.store.ChatUser;
-import com.lcmcconaghy.java.transcore.command.TransCommand;
 import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
-public class CmdChatIgnore extends TransCommand
+public class CmdChatIgnore extends ChatCommand
 {
 	
 	// { CONSTRUCTOR } //
