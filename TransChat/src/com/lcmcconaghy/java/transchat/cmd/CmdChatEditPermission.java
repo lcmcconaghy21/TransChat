@@ -15,7 +15,7 @@ public class CmdChatEditPermission extends ChatCommand
 	
 	public CmdChatEditPermission() throws TransCommandException
 	{
-		super("permission");
+		this.addAliases("permissions", "perm");
 		
 		this.setPerm(Perm.EDIT_PERMISSION);
 		this.addArgument(ArgumentChannel.get(), "channel");

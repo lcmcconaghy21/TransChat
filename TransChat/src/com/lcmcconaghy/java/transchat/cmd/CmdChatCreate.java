@@ -13,7 +13,7 @@ public class CmdChatCreate extends ChatCommand
 	
 	public CmdChatCreate() throws TransCommandException
 	{
-		super("create");
+		this.addAlias("create");
 		
 		this.setPerm(Perm.CREATE);
 		this.addArgument(ArgumentString.get(), "name");

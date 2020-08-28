@@ -14,7 +14,7 @@ public class CmdPlayerMute extends ChatCommand
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public CmdPlayerMute() throws TransCommandException
 	{
-		super("mute");
+		this.addAlias("mute");
 		
 		this.setDesc("mute a user");
 		this.setPerm(Perm.MUTE);

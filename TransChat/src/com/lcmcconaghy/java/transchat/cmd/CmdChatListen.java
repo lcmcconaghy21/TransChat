@@ -13,7 +13,7 @@ public class CmdChatListen extends ChatCommand
 	
 	public CmdChatListen() throws TransCommandException
 	{
-		super("listen");
+		this.addAlias("listen");
 		
 		this.setPerm(Perm.LISTEN);
 		this.addArgument(ArgumentChannel.get(), "channel");

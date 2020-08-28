@@ -13,7 +13,7 @@ public class CmdChatEditDistance extends ChatCommand
 	
 	public CmdChatEditDistance() throws TransCommandException
 	{
-		super("distance");
+		this.addAlias("distance");
 		
 		this.setDesc("set distance");
 		this.setPerm(Perm.EDIT_DISTANCE);

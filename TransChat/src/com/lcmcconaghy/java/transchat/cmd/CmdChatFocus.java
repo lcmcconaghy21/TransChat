@@ -13,7 +13,7 @@ public class CmdChatFocus extends ChatCommand
 	
 	public CmdChatFocus() throws TransCommandException
 	{
-		super("focus");
+		this.addAlias("focus");
 		
 		this.setDesc("focus on a channel");
 		this.setPerm(Perm.FOCUS);

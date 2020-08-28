@@ -12,7 +12,7 @@ public class CmdChatRemove extends ChatCommand
 	
 	public CmdChatRemove() throws TransCommandException
 	{
-		super("remove");
+		this.addAlias("remove");
 		
 		this.setPerm(Perm.REMOVE);
 		this.addArgument(ArgumentChannel.get(), "channel");

@@ -14,7 +14,7 @@ public class CmdChatIgnore extends TransCommand
 	
 	public CmdChatIgnore() throws TransCommandException
 	{
-		super("ignore");
+		this.addAlias("ignore");
 		
 		this.setPerm(Perm.IGNORE);
 		this.addArgument(ArgumentChannel.get(), "channel");

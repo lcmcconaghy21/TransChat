@@ -12,7 +12,7 @@ public class CmdChatList extends ChatCommand
 	
 	public CmdChatList() throws TransCommandException
 	{
-		super("list");
+		this.addAlias("list");
 		
 		this.setDesc("list all channels");
 		this.setPerm(Perm.LIST);

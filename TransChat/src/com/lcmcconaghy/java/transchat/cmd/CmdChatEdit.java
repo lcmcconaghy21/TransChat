@@ -9,7 +9,7 @@ public class CmdChatEdit extends ChatCommand
 	
 	public CmdChatEdit() throws TransCommandException
 	{
-		super("edit");
+		this.addAlias("edit");
 		
 		this.setDesc("edit channel properties");
 		

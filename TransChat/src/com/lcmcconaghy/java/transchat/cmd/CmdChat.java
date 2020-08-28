@@ -11,7 +11,7 @@ public class CmdChat extends ChatCommand
 	
 	public CmdChat() throws TransCommandException
 	{
-		super("chat", "ch");
+		this.addAliases("chat", "channel");
 		
 		this.addSubCommand(new CmdChatCreate());
 		this.addSubCommand(new CmdChatRemove());
