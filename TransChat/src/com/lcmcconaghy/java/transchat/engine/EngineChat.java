@@ -109,6 +109,7 @@ public class EngineChat extends Engine
 			event.setCancelled(true);
 		}
 		
+		event.setCancelled(true);
 	}
 	
 	/**
