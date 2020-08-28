@@ -6,7 +6,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import com.lcmcconaghy.java.transchat.Distance;
-import com.lcmcconaghy.java.transchat.event.PlayerChannelSwitchEvent;
 import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transchat.store.ChatUser;
 import com.lcmcconaghy.java.transcore.Message;
@@ -48,10 +47,6 @@ public class EngineChat extends Engine
 		if (swtch == null) return;
 		
 		ChatUser user = ChatUser.get(event.getPlayer());
-		
-		PlayerChannelSwitchEvent switchEvent = new PlayerChannelSwitchEvent(user, user.getFocused(), swtch);
-		switchEvent.run();
-		if (switchEvent.isCancelled()) return;
 		
 		user.focus(swtch);
 		user.message(new Message("<a>You are now speaking in the <d>"+swtch.getID()+" Channel<a>.")
