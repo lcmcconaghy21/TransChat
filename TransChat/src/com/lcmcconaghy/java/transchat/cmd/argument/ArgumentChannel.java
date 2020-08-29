@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transchat.store.ChannelCollection;
 import com.lcmcconaghy.java.transcore.command.argument.ArgumentAbstract;
+import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
 public class ArgumentChannel extends ArgumentAbstract<Channel>
 {
@@ -20,9 +21,16 @@ public class ArgumentChannel extends ArgumentAbstract<Channel>
 	// { ARGUMENTS } //
 	
 	@Override
-	public Channel read(String arg0, CommandSender arg1)
+	public Channel read(String arg0, CommandSender arg1) throws TransCommandException
 	{
-		return ChannelCollection.get().getByName(arg0);
+		Channel ret = ChannelCollection.get().getByName(arg0);
+		
+		if ( ret == null )
+		{
+			throw new TransCommandException("There is no <f>"+arg0+" Channel <c>registered.");
+		}
+		
+		return ret;
 	}
 
 	@Override

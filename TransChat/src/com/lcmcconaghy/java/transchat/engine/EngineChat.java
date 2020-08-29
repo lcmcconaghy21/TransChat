@@ -49,7 +49,7 @@ public class EngineChat extends Engine
 		ChatUser user = ChatUser.get(event.getPlayer());
 		
 		user.focus(swtch);
-		user.message(new Message("<a>You are now speaking in the <d>"+swtch.getID()+" Channel<a>.")
+		user.message(new Message("<a>You are now speaking in the <d>"+swtch.getDisplayName()+" Channel<a>.")
 				     .format());
 		
 		String set = event.getMessage().substring(locColon+1);

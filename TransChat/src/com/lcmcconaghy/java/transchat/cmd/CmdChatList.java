@@ -20,7 +20,7 @@ public class CmdChatList extends ChatCommand
 	}
 	
 	@Override
-	public void execute()
+	public void execute() throws TransCommandException
 	{
 		int page = this.readArgument(1);
 		
