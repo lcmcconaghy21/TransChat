@@ -31,7 +31,7 @@ public class EngineChat extends Engine
 	
 	// { EVENT HANDLERS } //
 	
-	@EventHandler(priority=EventPriority.NORMAL)
+	@EventHandler(priority=EventPriority.LOW)
 	public void quickSwitch(AsyncPlayerChatEvent event)
 	{
 		if (!event.getMessage().contains(":")) return;
@@ -52,19 +52,23 @@ public class EngineChat extends Engine
 		user.message(new Message("<a>You are now speaking in the <d>"+swtch.getDisplayName()+" Channel<a>.")
 				     .format());
 		
-		String set = event.getMessage().substring(locColon+1);
+		String set = event.getMessage().substring(locColon+1, event.getMessage().length());
 		
-		if (set.length()<=0) return;
+		if (set.length() <= 0 || set.equalsIgnoreCase("") || set.equalsIgnoreCase(" "))
+		{
+			event.setCancelled(true);
+			return;
+		}
 		
-		event.setMessage(event.getMessage().substring(locColon+1));
+		event.setMessage( set );
 	}
 	
 	// TODO Minimize executing AsyncPlayerChatEvent to only cases where Players are...
 	// ...the same distance or within the inner radius
-	@EventHandler(priority=EventPriority.LOW)
+	@EventHandler(priority=EventPriority.NORMAL)
 	public void executeChat(AsyncPlayerChatEvent event)
 	{
-		ChatUser user = ChatUser.get(event.getPlayer());
+		final ChatUser user = ChatUser.get(event.getPlayer());
 		Channel channel = user.getFocused();
 		ChatUser recipient = null;
 		
@@ -74,7 +78,7 @@ public class EngineChat extends Engine
 		
 		if (channel.hasRadius())
 		{
-			for (Player players : user.getNearbyPlayers(channel.getRadiusOuter()))
+			for (Player players : user.getNearbyPlayers( channel.getRadiusOuter() ))
 			{
 				recipient = ChatUser.get(players);
 				
