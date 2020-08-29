@@ -34,6 +34,7 @@ public class EngineChat extends Engine
 	@EventHandler(priority=EventPriority.LOW)
 	public void quickSwitch(AsyncPlayerChatEvent event)
 	{
+		if (event.isCancelled()) return;
 		if (!event.getMessage().contains(":")) return;
 		
 		int locColon = event.getMessage().indexOf(":");
@@ -68,6 +69,8 @@ public class EngineChat extends Engine
 	@EventHandler(priority=EventPriority.NORMAL)
 	public void executeChat(AsyncPlayerChatEvent event)
 	{
+		if (event.isCancelled()) return;
+		
 		final ChatUser user = ChatUser.get(event.getPlayer());
 		Channel channel = user.getFocused();
 		ChatUser recipient = null;
