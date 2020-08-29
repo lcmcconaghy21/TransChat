@@ -1,9 +1,7 @@
 package com.lcmcconaghy.java.transchat;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.lcmcconaghy.java.transchat.adapter.ChatAdapter;
 import com.lcmcconaghy.java.transchat.cmd.CmdChat;
 import com.lcmcconaghy.java.transchat.cmd.CmdPlayerMute;
 import com.lcmcconaghy.java.transchat.engine.EngineChat;
@@ -25,10 +23,6 @@ public class TransChat extends TransPlugin
 	
 	private static TransChat i;
 	public static TransChat get() { return TransChat.i; }
-	
-	// { FIELDS } //
-	
-	private List<ChatAdapter> registeredAdapters = new ArrayList<ChatAdapter>();
 	
 	// { CONSTRUCTOR } //
 	
@@ -88,38 +82,6 @@ public class TransChat extends TransPlugin
 	public List<Engine> getEngines()
 	{
 		return UtilGeneral.list(EngineChat.get());
-	}
-	
-	// { ADAPTER } //
-	
-	/**
-	 * @param adapters Varargs of type ChatAdapter
-	 */
-	public void registerAdapter(ChatAdapter...adapters)
-	{
-		for (ChatAdapter adapter : adapters)
-		{
-			if (this.registeredAdapters.contains(adapter)) continue;
-			
-			this.registeredAdapters.add(adapter);
-		}
-	}
-	
-	/**
-	 * @return registered List of ChatAdapters
-	 */
-	public List<ChatAdapter> getChatAdapters()
-	{
-		return this.registeredAdapters;
-	}
-	
-	/**
-	 * @param arg0 ChatAdapter type
-	 * @return whether ChatAdapter is registered and present
-	 */
-	public boolean containsAdapter(ChatAdapter arg0)
-	{
-		return this.registeredAdapters.contains(arg0);
 	}
 
 	@Override
