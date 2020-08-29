@@ -34,6 +34,7 @@ public class EngineChat extends Engine
 	@EventHandler(priority=EventPriority.LOW)
 	public void quickSwitch(AsyncPlayerChatEvent event)
 	{
+		// CHECK IF EVENT SHOULD RUN, AND IF QUICK SWITCH IS BEING USED
 		if (event.isCancelled()) return;
 		if (!event.getMessage().contains(":")) return;
 		
@@ -41,10 +42,12 @@ public class EngineChat extends Engine
 		
 		String preColon = event.getMessage().substring(0, locColon);
 		
+		// IF THE PRE-COLON MESSAGE HAS A SPACE, IT IS LIKELY NOT A QUICK-SWITCH
 		if (preColon.contains(" ")) return;
 		
 		Channel swtch = Channel.getByQuickSwitch(preColon);
 		
+		// IF THERE IS NO CHANNEL WITH THE QUICK SWITCH, CONTINUE AS NORMAL
 		if (swtch == null) return;
 		
 		ChatUser user = ChatUser.get(event.getPlayer());
@@ -55,6 +58,8 @@ public class EngineChat extends Engine
 		
 		String set = event.getMessage().substring(locColon+1, event.getMessage().length());
 		
+		// IF THERE IS NO MESSAGE FOLLOWING THE COLON, DO NOT CONTINUE...
+		//...WITH A NEW CHAT EVENT
 		if (set.length() <= 0 || set.equalsIgnoreCase("") || set.equalsIgnoreCase(" "))
 		{
 			event.setCancelled(true);
@@ -69,15 +74,17 @@ public class EngineChat extends Engine
 	@EventHandler(priority=EventPriority.NORMAL)
 	public void executeChat(AsyncPlayerChatEvent event)
 	{
+		// CHECK IF CHATTING IS ALLOWED
 		if (event.isCancelled()) return;
 		
 		final ChatUser user = ChatUser.get(event.getPlayer());
 		Channel channel = user.getFocused();
 		ChatUser recipient = null;
 		
+		// SEND THE PLAYER A PERSONAL, UNPARSED MESSAGE
 		user.message( format(channel, user, user, event.getMessage(), true) );
 		
-		// if local
+		// IF LOCAL
 		
 		if (channel.hasRadius())
 		{
@@ -88,14 +95,14 @@ public class EngineChat extends Engine
 				if (recipient.equals(user)) continue;
 				if (recipient.hasBlocked(user)) continue;
 				
-				// if inside outer radius but outside inner radius
+				// IF RECIPIENT IS OUTSIDE INNER RADIUS, BUT INSIDE OUTER RADIUS
 				if (user.distanceBetween(recipient)<=channel.getRadiusInner())
 				{
 					recipient.message( format(channel, user, recipient, event.getMessage(), false) );
 					continue;
 				}
 				
-				// if inside both outside and inner radii
+				// IF INSIDE BOTH INNER AND OUTER RADII
 				recipient.message( format(channel, user, recipient, event.getMessage(), true) );
 			}
 			
@@ -103,7 +110,7 @@ public class EngineChat extends Engine
 			return;
 		}
 		
-		// if not localized
+		// IF CHANNEL IS NOT LOCALIZED
 		for (Player entry : event.getRecipients())
 		{
 			recipient = ChatUser.get(entry);
