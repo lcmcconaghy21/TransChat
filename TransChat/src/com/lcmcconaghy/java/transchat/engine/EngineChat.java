@@ -88,15 +88,18 @@ public class EngineChat extends Engine
 		
 		if (channel.hasRadius())
 		{
-			for (Player players : user.getNearbyPlayers( channel.getRadiusOuter() ))
+			for (Player players : event.getRecipients())
 			{
 				recipient = ChatUser.get(players);
+				
+				// IF RECIPIENT IS OUTSIDE OUTER RADIUS
+				if (recipient.distanceBetween(user) > channel.getRadiusOuter()) continue;
 				
 				if (recipient.equals(user)) continue;
 				if (recipient.hasBlocked(user)) continue;
 				
 				// IF RECIPIENT IS OUTSIDE INNER RADIUS, BUT INSIDE OUTER RADIUS
-				if (user.distanceBetween(recipient)<=channel.getRadiusInner())
+				if (user.distanceBetween(recipient)>=channel.getRadiusInner())
 				{
 					recipient.message( format(channel, user, recipient, event.getMessage(), false) );
 					continue;
@@ -149,7 +152,7 @@ public class EngineChat extends Engine
 			
 			if (arg0.hasRadius() && !arg4)
 			{
-				sent = sent.obfuscate(arg1.distanceBetween(arg2), arg0.getRadiusOuter()-arg0.getRadiusInner());
+				sent = sent.obfuscate(arg1.distanceBetween(arg2)-arg0.getRadiusInner(), arg0.getRadiusOuter()-arg0.getRadiusInner());
 			}
 			
 			message = message.replace(MESSAGE, sent.getText());
@@ -170,6 +173,13 @@ public class EngineChat extends Engine
 		{
 			message = message.replace(CHARACTER, Distance.getFromString(arg3)
 					                                     .getDescriptor());
+		}
+		if (message.contains(LOCAL))
+		{
+			Distance dist = Distance.getFromString(arg3);
+			String to = dist.getDescriptor();
+			
+			message = message.replace(LOCAL, to);
 		}
 		if (message.contains(DISTANCE))
 		{
