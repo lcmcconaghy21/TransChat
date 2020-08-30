@@ -16,6 +16,7 @@ public class CmdChatEdit extends ChatCommand
 		
 		this.setDesc("edit channel properties");
 		
+		this.addSubCommand( CmdChatEditObfuscation.get() );
 		this.addSubCommand( CmdChatEditQuickswitch.get() );
 		this.addSubCommand( CmdChatEditDistance.get() );
 		this.addSubCommand( CmdChatEditPermission.get() );

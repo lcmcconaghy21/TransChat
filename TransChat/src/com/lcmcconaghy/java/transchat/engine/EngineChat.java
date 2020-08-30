@@ -101,7 +101,7 @@ public class EngineChat extends Engine
 				// IF RECIPIENT IS OUTSIDE INNER RADIUS, BUT INSIDE OUTER RADIUS
 				if (user.distanceBetween(recipient)>=channel.getRadiusInner())
 				{
-					recipient.message( format(channel, user, recipient, event.getMessage(), false) );
+					recipient.message( format(channel, user, recipient, event.getMessage(), !channel.willObfuscate()) );
 					continue;
 				}
 				

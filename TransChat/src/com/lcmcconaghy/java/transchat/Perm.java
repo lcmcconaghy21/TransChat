@@ -13,6 +13,7 @@ public enum Perm implements PermissionBase
 	CREATE,
 	REMOVE,
 	
+	EDIT_OBFUSCATION,
 	EDIT_DISTANCE,
 	EDIT_PERMISSION,
 	EDIT_SWITCH,

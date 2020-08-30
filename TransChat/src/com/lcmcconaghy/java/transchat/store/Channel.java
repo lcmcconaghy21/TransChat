@@ -60,6 +60,7 @@ public class Channel extends StoreItem<Channel>
 	
 	private boolean hasCooldown = false;
 	private boolean canTagUser = false;
+	private boolean willObfuscate = false;
 	
 	// { SETTERS } //
 	
@@ -110,6 +111,11 @@ public class Channel extends StoreItem<Channel>
 	public void toggleTagging(boolean arg0)
 	{
 		this.canTagUser = arg0;
+	}
+	
+	public void toggleObfuscation(boolean arg0)
+	{
+		this.willObfuscate = arg0;
 	}
 	
 	// { GETTERS } //
@@ -169,5 +175,10 @@ public class Channel extends StoreItem<Channel>
 	public boolean hasCooldown()
 	{
 		return this.hasCooldown;
+	}
+	
+	public boolean willObfuscate()
+	{
+		return this.willObfuscate;
 	}
 }
