@@ -9,6 +9,11 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatEditQuickswitch extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatEditQuickswitch i = new CmdChatEditQuickswitch();
+	public static CmdChatEditQuickswitch get() { return CmdChatEditQuickswitch.i; }
+	
 	// { CONSTRUCTOR } //
 	
 	public CmdChatEditQuickswitch()

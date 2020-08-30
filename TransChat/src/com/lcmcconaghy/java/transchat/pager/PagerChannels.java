@@ -9,7 +9,6 @@ import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transchat.store.ChannelCollection;
 import com.lcmcconaghy.java.transchat.store.ChatUser;
 import com.lcmcconaghy.java.transcore.Message;
-import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 import com.lcmcconaghy.java.transcore.pager.PagerAbstract;
 
 import net.md_5.bungee.api.ChatColor;
@@ -33,22 +32,8 @@ public class PagerChannels extends PagerAbstract<Channel>
 	{
 		super("Channel List", ChannelCollection.get());
 		
-		try
-		{
-			this.cmdFocus = new CmdChatFocus();
-		}
-		catch (TransCommandException e)
-		{
-			e.printStackTrace();
-		}
-		try
-		{
-			this.cmdListen = new CmdChatListen();
-		}
-		catch (TransCommandException e)
-		{
-			e.printStackTrace();
-		}
+		this.cmdFocus = CmdChatFocus.get();
+		this.cmdListen = CmdChatListen.get();
 	}
 	
 	// { PAGER } //
@@ -58,7 +43,7 @@ public class PagerChannels extends PagerAbstract<Channel>
 	{
 		ChatUser user = ChatUser.get(arg1);
 		
-		Message name = new Message(arg0.getDisplayName()+"<f>: ");
+		Message name = new Message("<a>"+arg0.getDisplayName()+"<f>: ").format();
 		Message listen = new Message("[L] ").color(ChatColor.RED);
 		Message focus = new Message("[F] ").color(ChatColor.RED);
 		

@@ -9,9 +9,14 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatIgnore extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatIgnore i = new CmdChatIgnore();
+	public static CmdChatIgnore get() { return CmdChatIgnore.i; }
+	
 	// { CONSTRUCTOR } //
 	
-	public CmdChatIgnore() throws TransCommandException
+	public CmdChatIgnore()
 	{
 		this.addAlias("ignore");
 		

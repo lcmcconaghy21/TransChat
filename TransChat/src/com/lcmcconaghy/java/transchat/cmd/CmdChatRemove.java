@@ -8,9 +8,14 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatRemove extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatRemove i = new CmdChatRemove();
+	public static CmdChatRemove get() { return CmdChatRemove.i; }
+	
 	// { CONSTRUCTOR } //
 	
-	public CmdChatRemove() throws TransCommandException
+	public CmdChatRemove()
 	{
 		this.addAlias("remove");
 		

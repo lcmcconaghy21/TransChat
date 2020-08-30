@@ -10,7 +10,6 @@ import com.lcmcconaghy.java.transchat.store.ChatUserCollection;
 import com.lcmcconaghy.java.transcore.TransPlugin;
 import com.lcmcconaghy.java.transcore.command.TransCommand;
 import com.lcmcconaghy.java.transcore.engine.Engine;
-import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 import com.lcmcconaghy.java.transcore.store.Config;
 import com.lcmcconaghy.java.transcore.store.StoreCollection;
 import com.lcmcconaghy.java.transcore.store.serializable.Serializable;
@@ -65,17 +64,8 @@ public class TransChat extends TransPlugin
 	@Override
 	public List<TransCommand> getTransCommands()
 	{
-		try
-		{
-			return UtilGeneral.list(new CmdChat(),
-					                new CmdPlayerMute());
-		}
-		catch (TransCommandException e)
-		{
-			e.printStackTrace();
-		}
-		
-		return null;
+		return UtilGeneral.list(new CmdChat(),
+				                new CmdPlayerMute());
 	}
 
 	@Override

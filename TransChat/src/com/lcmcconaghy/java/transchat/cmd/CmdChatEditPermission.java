@@ -11,9 +11,14 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatEditPermission extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatEditPermission i = new CmdChatEditPermission();
+	public static CmdChatEditPermission get() { return CmdChatEditPermission.i; }
+	
 	// { CONSTRUCTOR } //
 	
-	public CmdChatEditPermission() throws TransCommandException
+	public CmdChatEditPermission()
 	{
 		this.addAliases("permissions", "perm");
 		

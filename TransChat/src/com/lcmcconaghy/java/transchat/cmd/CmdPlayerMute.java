@@ -4,15 +4,19 @@ import com.lcmcconaghy.java.transchat.Perm;
 import com.lcmcconaghy.java.transchat.store.ChatUser;
 import com.lcmcconaghy.java.transchat.store.ChatUserCollection;
 import com.lcmcconaghy.java.transcore.command.argument.bukkit.ArgumentUser;
-import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
 public class CmdPlayerMute extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdPlayerMute i = new CmdPlayerMute();
+	public static CmdPlayerMute get() { return CmdPlayerMute.i; }
+	
 	// { CONSTRUCTOR } //
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public CmdPlayerMute() throws TransCommandException
+	public CmdPlayerMute()
 	{
 		this.addAlias("mute");
 		

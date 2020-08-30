@@ -9,9 +9,14 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatFocus extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatFocus i = new CmdChatFocus();
+	public static CmdChatFocus get() { return CmdChatFocus.i; }
+	
 	// { CONSTRUCTOR } //
 	
-	public CmdChatFocus() throws TransCommandException
+	public CmdChatFocus()
 	{
 		this.addAlias("focus");
 		

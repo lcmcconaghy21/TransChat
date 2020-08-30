@@ -9,9 +9,14 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatListen extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatListen i = new CmdChatListen();
+	public static CmdChatListen get() { return CmdChatListen.i; }
+	
 	// { CONSTRUCTOR } //
 	
-	public CmdChatListen() throws TransCommandException
+	public CmdChatListen()
 	{
 		this.addAlias("listen");
 		

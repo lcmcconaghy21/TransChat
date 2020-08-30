@@ -9,9 +9,14 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatCreate extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatCreate i = new CmdChatCreate();
+	public static CmdChatCreate get() { return CmdChatCreate.i; }
+	
 	// { CONSTRUCTOR } //
 	
-	public CmdChatCreate() throws TransCommandException
+	public CmdChatCreate()
 	{
 		this.addAlias("create");
 		

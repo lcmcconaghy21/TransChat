@@ -9,9 +9,14 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatEditDistance extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatEditDistance i = new CmdChatEditDistance();
+	public static CmdChatEditDistance get() { return CmdChatEditDistance.i; }
+	
 	// { CONSTRUCTOR } //
 	
-	public CmdChatEditDistance() throws TransCommandException
+	public CmdChatEditDistance()
 	{
 		this.addAlias("distance");
 		

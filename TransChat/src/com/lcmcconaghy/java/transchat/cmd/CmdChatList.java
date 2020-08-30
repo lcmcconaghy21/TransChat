@@ -7,9 +7,14 @@ import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 public class CmdChatList extends ChatCommand
 {
 	
+	// { SINGLETON } //
+	
+	private static CmdChatList i = new CmdChatList();
+	public static CmdChatList get() { return CmdChatList.i; }
+	
 	// { CONSTRUCTOR } //
 	
-	public CmdChatList() throws TransCommandException
+	public CmdChatList()
 	{
 		this.addAlias("list");
 		
