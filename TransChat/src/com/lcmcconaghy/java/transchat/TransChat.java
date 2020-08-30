@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.lcmcconaghy.java.transchat.cmd.CmdChat;
 import com.lcmcconaghy.java.transchat.cmd.CmdPlayerMute;
+import com.lcmcconaghy.java.transchat.engine.EngineChannel;
 import com.lcmcconaghy.java.transchat.engine.EngineChat;
 import com.lcmcconaghy.java.transchat.store.ChannelCollection;
 import com.lcmcconaghy.java.transchat.store.ChatUserCollection;
@@ -71,7 +72,8 @@ public class TransChat extends TransPlugin
 	@Override
 	public List<Engine> getEngines()
 	{
-		return UtilGeneral.list(EngineChat.get());
+		return UtilGeneral.list(EngineChat.get(),
+				                EngineChannel.get());
 	}
 
 	@Override
