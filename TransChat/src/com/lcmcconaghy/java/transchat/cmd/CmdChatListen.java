@@ -20,6 +20,8 @@ public class CmdChatListen extends ChatCommand
 	{
 		this.addAlias("listen");
 		
+		this.setRequiresPlayer(true);
+		this.setDesc("listen to content of channel");
 		this.setPerm(Perm.LISTEN);
 		this.addArgument(ArgumentChannel.get(), "channel");
 	}
@@ -29,11 +31,6 @@ public class CmdChatListen extends ChatCommand
 	@Override
 	public void execute() throws TransCommandException
 	{
-		if ( !isPlayer() )
-		{
-			error("You must be a PLAYER to listen to a channel.");
-			return;
-		}
 		ChatUser user = ChatUser.get(sender);
 		Channel listen = this.readArgument();
 		

@@ -20,6 +20,8 @@ public class CmdChatIgnore extends ChatCommand
 	{
 		this.addAlias("ignore");
 		
+		this.setRequiresPlayer(true);
+		this.setDesc("ignore all content of a channel");
 		this.setPerm(Perm.IGNORE);
 		this.addArgument(ArgumentChannel.get(), "channel");
 	}

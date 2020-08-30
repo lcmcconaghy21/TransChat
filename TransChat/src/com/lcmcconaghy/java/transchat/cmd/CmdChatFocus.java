@@ -20,6 +20,7 @@ public class CmdChatFocus extends ChatCommand
 	{
 		this.addAlias("focus");
 		
+		this.setRequiresPlayer(true);
 		this.setDesc("focus on a channel");
 		this.setPerm(Perm.FOCUS);
 		this.addArgument(ArgumentChannel.get(), "channel");
@@ -30,12 +31,6 @@ public class CmdChatFocus extends ChatCommand
 	@Override
 	public void execute() throws TransCommandException
 	{
-		if ( !isPlayer() )
-		{
-			error("You must be a player to execute this command.");
-			return;
-		}
-		
 		ChatUser user = ChatUser.get(sender);
 		Channel channel = this.readArgument();
 		
