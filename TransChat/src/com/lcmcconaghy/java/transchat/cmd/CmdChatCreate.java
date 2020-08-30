@@ -1,6 +1,7 @@
 package com.lcmcconaghy.java.transchat.cmd;
 
 import com.lcmcconaghy.java.transchat.Perm;
+import com.lcmcconaghy.java.transchat.event.ChannelCreateEvent;
 import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transchat.store.ChannelCollection;
 import com.lcmcconaghy.java.transcore.command.argument.primitive.ArgumentString;
@@ -38,6 +39,9 @@ public class CmdChatCreate extends ChatCommand
 		
 		Channel create = ChannelCollection.get().create();
 		create.setDisplayName(name);
+		
+		ChannelCreateEvent createEvent = new ChannelCreateEvent(create);
+		createEvent.run();
 		
 		message("<a>You have created the <d>"+name+" Channel<a>!");
 	}

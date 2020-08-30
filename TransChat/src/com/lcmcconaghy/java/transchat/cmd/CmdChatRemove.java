@@ -2,6 +2,7 @@ package com.lcmcconaghy.java.transchat.cmd;
 
 import com.lcmcconaghy.java.transchat.Perm;
 import com.lcmcconaghy.java.transchat.cmd.argument.ArgumentChannel;
+import com.lcmcconaghy.java.transchat.event.ChannelRemoveEvent;
 import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transcore.exception.TransCommandException;
 
@@ -30,6 +31,9 @@ public class CmdChatRemove extends ChatCommand
 	{
 		Channel channel = this.readArgument();
 		String name = channel.getDisplayName();
+		
+		ChannelRemoveEvent removeEvent = new ChannelRemoveEvent(channel);
+		removeEvent.run();
 		
 		channel.drop();
 		
