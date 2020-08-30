@@ -54,13 +54,13 @@ public class PagerChannels extends PagerAbstract<Channel>
 			{
 				focus = focus.color(ChatColor.GREEN)
 					 .command(this.cmdFocus, arg0.getDisplayName())
-				     .hover("<a>CLICK TO FOCUS THIS CHANNEL");
+				     .hover("<6>CLICK TO FOCUS THIS CHANNEL");
 			}
 			if (!user.isListening(arg0) && user.getPlayer().hasPermission( arg0.getListenNode() ))
 			{
 				listen = listen.color(ChatColor.GREEN)
 					  .command(this.cmdListen, arg0.getDisplayName())
-				      .hover("CLICK TO LISTEN TO THIS CHANNEL");
+				      .hover("<6>CLICK TO LISTEN TO THIS CHANNEL");
 			}
 		}
 		
