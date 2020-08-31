@@ -5,3 +5,26 @@ description: <d>TransChat <e>is a plugin developed by the <b>Inkwell Realms Deve
 authors: [Ironhippy]
 softdepend: [TransCore]
 api-version: 1.13
+permissions:
+  transchat.user:
+    description: All user TransChat commands
+    children:
+      transchat.listen: true
+      transchat.ignore: true
+      transchat.focus: true
+      transchat.list: true
+  transchat.edit:
+    description: All Channel editing features
+    children:
+      transchat.edit.obfuscation: true
+      transchat.edit.distance: true
+      transchat.edit.switch: true
+      transchat.edit.permission: true
+  transchat.*:
+    description: All TransChat commands
+    children:
+      transchat.user: true
+      transchat.edit: true
+      transchat.create: true
+      transchat.remove: true
+      transchat.mute: true
