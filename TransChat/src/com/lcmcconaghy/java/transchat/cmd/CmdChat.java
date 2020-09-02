@@ -1,6 +1,8 @@
 package com.lcmcconaghy.java.transchat.cmd;
 
 import com.lcmcconaghy.java.transchat.TransChat;
+import com.lcmcconaghy.java.transchat.store.ChannelCollection;
+import com.lcmcconaghy.java.transcore.command.TransCommandReload;
 import com.lcmcconaghy.java.transcore.command.TransCommandVersion;
 
 public class CmdChat extends ChatCommand
@@ -24,6 +26,8 @@ public class CmdChat extends ChatCommand
 		this.addSubCommand( CmdChatIgnore.get() );
 		
 		this.addSubCommand( CmdPlayerMute.get() );
+		
+		this.addSubCommand(new TransCommandReload(TransChat.get(), ChannelCollection.get()));
 		
 		this.addSubCommand(new TransCommandVersion(TransChat.get()));
 	}
