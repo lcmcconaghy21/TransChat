@@ -43,5 +43,4 @@ public class EngineChannel extends Engine
 			user.ignore( removeEvent.getChannel() );
 		}
 	}
-	
 }
