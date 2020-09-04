@@ -58,8 +58,8 @@ public class TransChat extends TransPlugin
 	@Override
 	public List<StoreCollection<?>> getStoreCollections()
 	{
-		return UtilGeneral.list(ChatUserCollection.get(),
-				                ChannelCollection.get());
+		return UtilGeneral.list(ChannelCollection.get(),
+				                ChatUserCollection.get());
 	}
 
 	@Override
