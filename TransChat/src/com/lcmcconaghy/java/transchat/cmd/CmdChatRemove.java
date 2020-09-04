@@ -20,6 +20,7 @@ public class CmdChatRemove extends ChatCommand
 	{
 		this.addAlias("remove");
 		
+		this.setDesc("remove a channel");
 		this.setPerm(Perm.REMOVE);
 		this.addArgument(ArgumentChannel.get(), "channel");
 	}

@@ -21,6 +21,7 @@ public class CmdChatCreate extends ChatCommand
 	{
 		this.addAlias("create");
 		
+		this.setDesc("create a new channel");
 		this.setPerm(Perm.CREATE);
 		this.addArgument(ArgumentString.get(), "name");
 		
