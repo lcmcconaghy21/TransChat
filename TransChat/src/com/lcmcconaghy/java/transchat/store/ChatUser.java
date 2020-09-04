@@ -14,8 +14,8 @@ public class ChatUser extends UserItem
 	
 	// { FIELDS } //
 	
-	private String idFocusedChannel = ChannelCollection.DEFAULT_CHANNEL_ID;
-	private List<String> idsChannelsListening = new ArrayList<String>();
+	protected String idFocusedChannel = ChannelCollection.DEFAULT_CHANNEL_ID;
+	protected List<String> idsChannelsListening = new ArrayList<String>();
 	private String nameRoleplay;
 	
 	private boolean muted = false;

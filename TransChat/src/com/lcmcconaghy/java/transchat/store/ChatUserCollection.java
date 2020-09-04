@@ -1,12 +1,7 @@
 package com.lcmcconaghy.java.transchat.store;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.lcmcconaghy.java.transchat.ChatConfig;
 import com.lcmcconaghy.java.transcore.TransPlugin;
 import com.lcmcconaghy.java.transcore.store.UserCollection;
-import com.lcmcconaghy.java.transcore.util.UtilGeneral;
 
 public class ChatUserCollection extends UserCollection<ChatUser>
 {
