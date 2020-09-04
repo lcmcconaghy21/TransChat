@@ -71,12 +71,14 @@ public class Channel extends StoreItem<Channel>
 		this.listenNode = "transchat.listen."+arg0;
 		
 		this.aliases.add(arg0.toLowerCase());
+		this.update();
 	}
 	
 	public void updatePerm(String arg0)
 	{
 		this.focusNode = "transchat.chat."+arg0;
 		this.listenNode = "transchat.listen."+arg0;
+		this.update();
 	}
 	
 	public void addQuickSwitch(String arg0)
@@ -86,6 +88,7 @@ public class Channel extends StoreItem<Channel>
 		if (this.aliases.contains(arg0)) return;
 		
 		this.aliases.add(arg0);
+		this.update();
 	}
 	
 	public void removeQuickSwitch(String arg0)
@@ -95,27 +98,32 @@ public class Channel extends StoreItem<Channel>
 		if (!this.aliases.contains(arg0)) return;
 		
 		this.aliases.remove(arg0);
+		this.update();
 	}
 	
 	public void setRadius(double arg0, double arg1)
 	{
 		this.channelRadiusOuter = arg0;
 		this.channelRadiusInner = arg1;
+		this.update();
 	}
 	
 	public void toggleCooldown(boolean arg0)
 	{
 		this.hasCooldown = arg0;
+		this.update();
 	}
 	
 	public void toggleTagging(boolean arg0)
 	{
 		this.canTagUser = arg0;
+		this.update();
 	}
 	
 	public void toggleObfuscation(boolean arg0)
 	{
 		this.willObfuscate = arg0;
+		this.update();
 	}
 	
 	// { GETTERS } //
