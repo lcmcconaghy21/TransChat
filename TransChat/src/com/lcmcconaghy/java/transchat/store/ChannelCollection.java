@@ -65,6 +65,7 @@ public class ChannelCollection extends StoreCollection<Channel>
 		Channel def = create();
 		def.setDisplayName(configName);
 		def.toggleTagging(true);
+		def.isDef = true;
 		
 		DEFAULT_CHANNEL_ID = def.getID();
 	}

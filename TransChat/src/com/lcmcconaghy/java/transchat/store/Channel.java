@@ -53,6 +53,7 @@ public class Channel extends StoreItem<Channel>
 	private String focusNode;
 	private String listenNode;
 	
+	protected boolean isDef = false;
 	private String format = "<"+EngineChat.CHANNEL+" + "+EngineChat.PLAYER+"> "+EngineChat.MESSAGE;
 	
 	private double channelRadiusOuter = -1D;
@@ -106,6 +107,11 @@ public class Channel extends StoreItem<Channel>
 		this.channelRadiusOuter = arg0;
 		this.channelRadiusInner = arg1;
 		this.update();
+	}
+	
+	public boolean isDefault()
+	{
+		return this.isDef;
 	}
 	
 	public void toggleCooldown(boolean arg0)
