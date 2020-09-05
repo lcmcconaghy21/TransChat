@@ -3,7 +3,9 @@ package com.lcmcconaghy.java.transchat.store;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lcmcconaghy.java.transchat.ChatConfig;
 import com.lcmcconaghy.java.transcore.store.UserItem;
+import com.lcmcconaghy.java.transcore.util.UtilGeneral;
 
 public class ChatUser extends UserItem
 {
@@ -15,7 +17,7 @@ public class ChatUser extends UserItem
 	// { FIELDS } //
 	
 	protected String idFocusedChannel = ChannelCollection.DEFAULT_CHANNEL_ID;
-	protected List<String> idsChannelsListening = new ArrayList<String>();
+	protected List<String> idsChannelsListening = UtilGeneral.list( ChannelCollection.get().getByName( ChatConfig.get().getDefaultChatName() ).getID() );
 	private String nameRoleplay;
 	
 	private boolean muted = false;
