@@ -31,6 +31,13 @@ public class CmdChatRemove extends ChatCommand
 	public void execute() throws TransCommandException
 	{
 		Channel channel = this.readArgument();
+		
+		if (channel.isDefault())
+		{
+			error("Cannot remove a <d>default channel<c>.");
+			return;
+		}
+		
 		String name = channel.getDisplayName();
 		
 		ChannelRemoveEvent removeEvent = new ChannelRemoveEvent(channel);
