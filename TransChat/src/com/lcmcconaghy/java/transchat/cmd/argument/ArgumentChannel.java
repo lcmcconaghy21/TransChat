@@ -34,7 +34,7 @@ public class ArgumentChannel extends ArgumentAbstract<Channel>
 	}
 
 	@Override
-	public List<String> getTabCompleteList()
+	public List<String> getTabCompleteList(CommandSender arg0)
 	{
 		List<String> channelList = new ArrayList<String>();
 		
