@@ -52,6 +52,13 @@ public class EngineChat extends Engine
 		
 		ChatUser user = ChatUser.get(event.getPlayer());
 		
+		if ( !event.getPlayer().hasPermission( swtch.getFocusNode() ) )
+		{
+			user.message( new Message("You do not have permission to focus this channel").error() );
+			
+			return;
+		}
+		
 		user.focus(swtch);
 		user.message(new Message("<a>You are now speaking in the <d>"+swtch.getDisplayName()+" Channel<a>.")
 				     .format());
@@ -90,6 +97,13 @@ public class EngineChat extends Engine
 		{
 			for (Player players : event.getRecipients())
 			{
+				// IF RECEIVER CAN NOT LISTEN
+				if ( !players.hasPermission( channel.getListenNode() ) )
+				{
+					event.getRecipients().remove(players);
+					continue;
+				}
+				
 				recipient = ChatUser.get(players);
 				
 				// IF RECIPIENT IS OUTSIDE OUTER RADIUS
@@ -121,6 +135,14 @@ public class EngineChat extends Engine
 			if (recipient.equals(user)) continue;
 			if (recipient.hasBlocked(user)) continue;
 			
+			// IF PLAYER DOES NOT HAVE LISTEN NODE
+			if ( !entry.hasPermission( channel.getListenNode() ) )
+			{
+				event.getRecipients().remove(entry);
+				
+				continue;
+			}
+			
 			recipient.message( format(channel, user, recipient, event.getMessage(), true) );
 			
 			event.setCancelled(true);
@@ -140,7 +162,7 @@ public class EngineChat extends Engine
 	 */
 	protected Message format(Channel arg0, ChatUser arg1, ChatUser arg2, String arg3, boolean arg4)
 	{
-		Message message = new Message(arg0.getFormat());
+		Message message = new Message(arg0.getFormat()).format();
 		
 		if (message.contains(CHANNEL))
 		{
