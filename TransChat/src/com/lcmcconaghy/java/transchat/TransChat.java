@@ -5,6 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.lcmcconaghy.java.transchat.adapter.AdapterChannel;
+import com.lcmcconaghy.java.transchat.adapter.AdapterDistance;
+import com.lcmcconaghy.java.transchat.adapter.AdapterLocal;
+import com.lcmcconaghy.java.transchat.adapter.AdapterMessage;
+import com.lcmcconaghy.java.transchat.adapter.AdapterPlayer;
+import com.lcmcconaghy.java.transchat.adapter.AdapterProfile;
+import com.lcmcconaghy.java.transchat.adapter.AdapterWorld;
 import com.lcmcconaghy.java.transchat.adapter.FormatAdapter;
 import com.lcmcconaghy.java.transchat.cmd.CmdChat;
 import com.lcmcconaghy.java.transchat.cmd.CmdPlayerMute;
@@ -44,6 +51,16 @@ public class TransChat extends TransPlugin
 	@Override
 	public void startup()
 	{
+		this.registerFormatAdapters(AdapterMessage.get(),
+				                    AdapterPlayer.get(),
+				                    AdapterProfile.get(),
+				                    
+				                    AdapterWorld.get(),
+				                    AdapterDistance.get(),
+				                    
+				                    AdapterChannel.get(),
+				                    AdapterLocal.get());
+		
 		return;
 	}
 	
@@ -92,7 +109,7 @@ public class TransChat extends TransPlugin
 	
 	// { ADAPTERS } //
 	
-	public void registerAdapters(FormatAdapter... adapters)
+	public void registerFormatAdapters(FormatAdapter... adapters)
 	{
 		for (FormatAdapter adapter : adapters)
 		{
