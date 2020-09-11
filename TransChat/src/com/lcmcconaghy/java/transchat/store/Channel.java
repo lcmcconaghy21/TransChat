@@ -3,7 +3,9 @@ package com.lcmcconaghy.java.transchat.store;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lcmcconaghy.java.transchat.engine.EngineChat;
+import com.lcmcconaghy.java.transchat.adapter.AdapterChannel;
+import com.lcmcconaghy.java.transchat.adapter.AdapterMessage;
+import com.lcmcconaghy.java.transchat.adapter.AdapterPlayer;
 import com.lcmcconaghy.java.transcore.store.StoreItem;
 
 public class Channel extends StoreItem<Channel>
@@ -54,7 +56,9 @@ public class Channel extends StoreItem<Channel>
 	private String listenNode;
 	
 	protected boolean isDef = false;
-	private String format = "<"+EngineChat.CHANNEL+" + "+EngineChat.PLAYER+"> "+EngineChat.MESSAGE;
+	private String format = "<"+AdapterChannel.get().getFormat()
+			                +" + "+AdapterPlayer.get().getFormat()+"> "
+			                +AdapterMessage.get().getFormat();
 	
 	private double channelRadiusOuter = -1D;
 	private double channelRadiusInner = -1D;
