@@ -40,6 +40,11 @@ public abstract class AdapterAbstract implements FormatAdapter
 		return this.id;
 	}
 	
+	public String getFormat()
+	{
+		return "%"+this.id+"%";
+	}
+	
 	// { PRIORITY } //
 	
 	public FormatPriority getPriority()
