@@ -5,7 +5,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import com.lcmcconaghy.java.transchat.Distance;
+import com.lcmcconaghy.java.transchat.FormatPriority;
+import com.lcmcconaghy.java.transchat.TransChat;
+import com.lcmcconaghy.java.transchat.adapter.FormatAdapter;
 import com.lcmcconaghy.java.transchat.store.Channel;
 import com.lcmcconaghy.java.transchat.store.ChatUser;
 import com.lcmcconaghy.java.transcore.Message;
@@ -164,59 +166,32 @@ public class EngineChat extends Engine
 	{
 		Message message = new Message(arg0.getFormat()).format();
 		
-		if (message.contains(CHANNEL))
+		// PARSE MESSAGE PRIORITY
+		for (FormatAdapter adapterMessage : TransChat.get().getFormatAdapters(FormatPriority.MESSAGE))
 		{
-			message = message.replace(CHANNEL, arg0.getDisplayName());
+			message = message.replace("%"+adapterMessage.getID()+"%", 
+					  adapterMessage.read(arg0, arg1.getPlayer(), arg2.getPlayer(), arg3));
 		}
-		if (message.contains(MESSAGE))
+		
+		// PARSE HIGH PRIORITY
+		for (FormatAdapter adapterHigh : TransChat.get().getFormatAdapters(FormatPriority.HIGH))
 		{
-			Message sent = new Message(arg3);
-			
-			if (arg0.hasRadius() && !arg4)
-			{
-				sent = sent.obfuscate(arg1.distanceBetween(arg2)-arg0.getRadiusInner(), arg0.getRadiusOuter()-arg0.getRadiusInner());
-			}
-			
-			message = message.replace(MESSAGE, sent.getText());
+			message = message.replace("%"+adapterHigh.getID()+"%", 
+					  adapterHigh.read(arg0, arg1.getPlayer(), arg2.getPlayer(), arg3));
 		}
-		if (message.contains(WORLD))
+		
+		// PARSE MEDIUM PRIORITY
+		for (FormatAdapter adapterMedium : TransChat.get().getFormatAdapters(FormatPriority.MEDIUM))
 		{
-			message = message.replace(WORLD, arg1.getTransLocation().getWorld().getName());
+			message = message.replace("%"+adapterMedium.getID()+"%", 
+					  adapterMedium.read(arg0, arg1.getPlayer(), arg2.getPlayer(), arg3));
 		}
-		if (message.contains(PLAYER))
+		
+		// PARSE LOW PRIORITY
+		for (FormatAdapter adapterLow : TransChat.get().getFormatAdapters(FormatPriority.LOW))
 		{
-			message = message.replace(PLAYER, arg1.getPlayer().getName());
-		}
-		if (message.contains(CHARACTER))
-		{
-			message = message.replace(CHARACTER, arg1.getRoleplayName());
-		}
-		if (message.contains(DISTANCE))
-		{
-			message = message.replace(CHARACTER, Distance.getFromString(arg3)
-					                                     .getDescriptor());
-		}
-		if (message.contains(LOCAL))
-		{
-			Distance dist = Distance.getFromString(arg3);
-			String to = dist.getDescriptor();
-			
-			message = message.replace(LOCAL, to);
-		}
-		if (message.contains(DISTANCE))
-		{
-			double distance = arg1.distanceBetween(arg2);
-			
-			if (distance<0)
-			{
-				message = message.replace(DISTANCE, arg1.getTransLocation()
-						                                .getWorld()
-						                                .getName());
-				
-				return message;
-			}
-			
-			message = new Message(distance+"");
+			message = message.replace("%"+adapterLow.getID()+"%", 
+					  adapterLow.read(arg0, arg1.getPlayer(), arg2.getPlayer(), arg3));
 		}
 		
 		return message;

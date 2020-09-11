@@ -1,7 +1,11 @@
 package com.lcmcconaghy.java.transchat;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import com.lcmcconaghy.java.transchat.adapter.FormatAdapter;
 import com.lcmcconaghy.java.transchat.cmd.CmdChat;
 import com.lcmcconaghy.java.transchat.cmd.CmdPlayerMute;
 import com.lcmcconaghy.java.transchat.engine.EngineChannel;
@@ -18,6 +22,10 @@ import com.lcmcconaghy.java.transcore.util.UtilGeneral;
 
 public class TransChat extends TransPlugin
 {
+	
+	// { FIELDS } //
+	
+	private Map<FormatPriority, List<FormatAdapter>> adapters = new HashMap<FormatPriority, List<FormatAdapter>>();
 	
 	// { SINGLETON } //
 	
@@ -80,6 +88,30 @@ public class TransChat extends TransPlugin
 	public Config getTransConfig()
 	{
 		return ChatConfig.get();
+	}
+	
+	// { ADAPTERS } //
+	
+	public void registerAdapters(FormatAdapter... adapters)
+	{
+		for (FormatAdapter adapter : adapters)
+		{
+			if ( !this.adapters.containsKey(adapter.getPriority()) )
+			{
+				this.adapters.put(adapter.getPriority(), UtilGeneral.list(adapter));
+				continue;
+			}
+			
+			List<FormatAdapter> internalAdapters = this.adapters.get(adapter.getPriority());
+			internalAdapters.add(adapter);
+			
+			this.adapters.put(adapter.getPriority(), internalAdapters);
+		}
+	}
+	
+	public Collection<FormatAdapter> getFormatAdapters(FormatPriority arg0)
+	{
+		return this.adapters.get(arg0);
 	}
 	
 }
