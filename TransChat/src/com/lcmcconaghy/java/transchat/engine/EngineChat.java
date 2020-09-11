@@ -15,16 +15,6 @@ import com.lcmcconaghy.java.transcore.engine.Engine;
 
 public class EngineChat extends Engine
 {
-	
-	// { CONSTANTS } //	
-	
-	public static final String MESSAGE = "%message%";
-	public static final String PLAYER = "%playerName%";
-	public static final String CHARACTER = "%character%";
-	public static final String LOCAL = "%local%";
-	public static final String CHANNEL = "%channel%";
-	public static final String WORLD = "%world%";
-	public static final String DISTANCE = "%distance%";
 		
 	// { SINGLETON } //
 	
@@ -169,6 +159,8 @@ public class EngineChat extends Engine
 		// PARSE MESSAGE PRIORITY
 		for (FormatAdapter adapterMessage : TransChat.get().getFormatAdapters(FormatPriority.MESSAGE))
 		{
+			if ( !adapterMessage.containsFormat(arg0) ) continue;
+			
 			message = message.replace("%"+adapterMessage.getID()+"%", 
 					  adapterMessage.read(arg0, arg1.getPlayer(), arg2.getPlayer(), arg3));
 		}
@@ -176,6 +168,8 @@ public class EngineChat extends Engine
 		// PARSE HIGH PRIORITY
 		for (FormatAdapter adapterHigh : TransChat.get().getFormatAdapters(FormatPriority.HIGH))
 		{
+			if ( !adapterHigh.containsFormat(arg0) ) continue;
+			
 			message = message.replace("%"+adapterHigh.getID()+"%", 
 					  adapterHigh.read(arg0, arg1.getPlayer(), arg2.getPlayer(), arg3));
 		}
@@ -183,6 +177,8 @@ public class EngineChat extends Engine
 		// PARSE MEDIUM PRIORITY
 		for (FormatAdapter adapterMedium : TransChat.get().getFormatAdapters(FormatPriority.MEDIUM))
 		{
+			if ( !adapterMedium.containsFormat(arg0) ) continue;
+			
 			message = message.replace("%"+adapterMedium.getID()+"%", 
 					  adapterMedium.read(arg0, arg1.getPlayer(), arg2.getPlayer(), arg3));
 		}
@@ -190,6 +186,8 @@ public class EngineChat extends Engine
 		// PARSE LOW PRIORITY
 		for (FormatAdapter adapterLow : TransChat.get().getFormatAdapters(FormatPriority.LOW))
 		{
+			if ( !adapterLow.containsFormat(arg0) ) continue;
+			
 			message = message.replace("%"+adapterLow.getID()+"%", 
 					  adapterLow.read(arg0, arg1.getPlayer(), arg2.getPlayer(), arg3));
 		}
